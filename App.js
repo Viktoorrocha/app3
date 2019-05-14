@@ -7,27 +7,47 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+export default class App extends Component{
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+  constructor(props){
+    super(props);
+
+    this.state = { escolhaUsuario : '',escolhaComputador : '' }
+  }
+
+  jokenpo(escolhaUsuario){
+
+//gerar numero aleatorio ( 0,1,2)
+var numAleatorio = Math.floor(Math.random() * 3);
+
+var escolhaComputador = '';
+
+switch(numAleatorio){
+  case 0: escolhaComputador = 'pedra';break;
+  case 1: escolhaComputador = 'papel';break;
+  case 2: escolhaComputador = 'tesoura';break;
+}
+
+   this.setState({ escolhaUsuario : escolhaUsuario,
+                    escolhaComputador : escolhaComputador});
+
+  }
+  render(){
+    return(
+      <View style={{marginTop: 50}}>
+        <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
+        <Text>Escolha do usuário: {this.state.escolhaUsuario}</Text>
+        <Text>Resultado</Text>
+        <Button title ="Pedra" onPress={() =>  { this.jokenpo('pedra')}}></Button>
+        <Button title="Papel" onPress={() => { this.jokenpo('papel')}}></Button>
+        <Button title="Tesoura" onPress={() => { this.jokenpo('tesoura')}}></Button>
       </View>
     );
   }
 }
+  
 
 const styles = StyleSheet.create({
   container: {
