@@ -83,14 +83,29 @@ if(escolhaComputador == 'tesoura'){
       <View style={{marginTop: 50}}>
 
      <Topo></Topo>
-      <View></View>
+
+
+      <View style={styles.painelAcoes}>
+         <View style={styles.btnEscolha}>
+           <Button title ="Pedra" onPress={() =>  { this.jokenpo('pedra')}}></Button> 
+         </View>
+
+         <View style={styles.btnEscolha}>
+          <Button title="Papel" onPress={() => { this.jokenpo('papel')}}></Button>
+         </View>
+
+         <View style={styles.btnEscolha}>
+          <Button title="Tesoura" onPress={() => { this.jokenpo('tesoura')}}></Button>
+        </View>
+
+      </View>
+
+
+
       <View></View>
         <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
         <Text>Escolha do usuário: {this.state.escolhaUsuario}</Text>
-        <Text>Resultado: </Text>
-        <Button title ="Pedra" onPress={() =>  { this.jokenpo('pedra')}}></Button>
-        <Button title="Papel" onPress={() => { this.jokenpo('papel')}}></Button>
-        <Button title="Tesoura" onPress={() => { this.jokenpo('tesoura')}}></Button>
+        <Text>Resultado: {this.state.resultado} </Text>
       </View>
     );
   }
@@ -110,20 +125,12 @@ class Topo extends Component{
   
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+ btnEscolha: {
+   width : 90
+ },
+
+ painelAcoes: {
+   flexDirection: 'row',
+   justifyContent: 'space-between'
+ }
 });
