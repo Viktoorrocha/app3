@@ -100,12 +100,14 @@ if(escolhaComputador == 'tesoura'){
 
       </View>
 
+      <View style={styles.palco}>
+        <Text style={styles.txtResultado}>{this.state.resultado} </Text>
 
+        <Icone escolha={this.state.escolhaComputador} jogador= 'Computador'></Icone>
+        <Icone escolha={this.state.escolhaUsuario} jogador= 'Usuário'></Icone>
 
-      <View></View>
-        <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
-        <Text>Escolha do usuário: {this.state.escolhaUsuario}</Text>
-        <Text>Resultado: {this.state.resultado} </Text>
+      </View>
+
       </View>
     );
   }
@@ -122,6 +124,45 @@ class Topo extends Component{
 }
 
 
+class Icone extends Component {
+  render(){
+    if(this.props.escolha == 'pedra'){
+      return(
+        <View>
+        <Text>{this.props.jogador}</Text>
+        <Image source={require('./imgs/pedra.png')}/>
+       </View>
+      );
+
+    } else if(this.props.escolha == 'papel'){
+
+      return(
+        <View>
+        <Text>{this.props.jogador}</Text>
+        <Image source={require('./imgs/papel.png')}/>
+       </View>
+      );
+
+
+
+    } else if(this.props.escolha == 'tesoura'){
+
+
+      return(
+        <View>
+        <Text>{this.props.jogador}</Text>
+        <Image source={require('./imgs/tesoura.png')}/>
+       </View>
+      );
+
+
+    } else {
+      return false;
+    }
+  }
+}
+
+
   
 
 const styles = StyleSheet.create({
@@ -132,5 +173,15 @@ const styles = StyleSheet.create({
  painelAcoes: {
    flexDirection: 'row',
    justifyContent: 'space-between'
+ },
+ palco: {
+   alignItems: 'center',
+   marginTop: 10
+ },
+ txtResultado: {
+   fontSize: 25,
+   fontWeight: 'bold',
+   color: 'red',
+   height: 60
  }
 });
